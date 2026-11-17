@@ -1,0 +1,38 @@
+{
+  "hub": {
+    "host": "127.0.0.1",
+    "port": 8780
+  },
+  "dataRoot": "%APPDATA%\\IELTS-Study-Hub",
+  "portal": {
+    "dir": "portal",
+    "dist": "dist"
+  },
+  "modules": {
+    "ists": {
+      "enabled": true,
+      "port": 3000,
+      "path": "apps/ists",
+      "args": ["exec", "next", "start", "-H", "127.0.0.1", "-p", "{port}"],
+      "buildFile": ".next/BUILD_ID",
+      "readyPath": "/",
+      "readyTimeoutMs": 60000
+    },
+    "bandready": {
+      "enabled": true,
+      "command": "bandready",
+      "args": ["--no-browser"],
+      "port": 8765,
+      "dataDir": "%APPDATA%\\BandReady",
+      "webJson": "%APPDATA%\\BandReady\\web.json",
+      "readyPath": "/health",
+      "readyTimeoutMs": 180000
+    }
+  },
+  "shutdown": {
+    "graceMs": 3000
+  },
+  "monitor": {
+    "intervalMs": 10000
+  }
+}

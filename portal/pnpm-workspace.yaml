@@ -1,0 +1,7 @@
+# Build-script approvals live here in pnpm 10+ (not in package.json).
+# esbuild needs its postinstall step; everything else stays blocked.
+allowBuilds:
+  esbuild: true
+# Older pnpm releases read this key instead.
+onlyBuiltDependencies:
+  - esbuild

@@ -38,7 +38,7 @@ Pinned commits: ISTS `1088fe0…`, BandReady `b2d67d4…`.
 cd apps/ists
 corepack pnpm install
 corepack pnpm build
-corepack pnpm start -- -H 127.0.0.1 -p 3000
+corepack pnpm exec next start -H 127.0.0.1 -p 3000
 ```
 
 - `-H 127.0.0.1` is mandatory: `next start` otherwise listens on `0.0.0.0`.

@@ -1,4 +1,4 @@
-# IELTS Study Hub — Phase 0 架构审计报告
+﻿# IELTS Study Hub — Phase 0 架构审计报告
 
 > 审计对象：ISTS `aimerfeng/ists`、BandReady `Luxshan2000/ielts-prep`
 > 审计方式：源码与文档逐项核对（不修改上游），本地副本 + 上游 tarball
@@ -67,7 +67,7 @@
 ```bash
 pnpm install
 pnpm build
-pnpm start -- -H 127.0.0.1 -p 3000   # 关键：-H 必须显式指定
+pnpm exec next start -H 127.0.0.1 -p 3000   # 关键：-H 必须显式指定
 ```
 
 - 默认端口 **3000**（`PORT` 环境变量或 `-p` 可改）
@@ -300,3 +300,4 @@ Get-Content sidecar/bandready/server/routes/system.py  # GET /health
 ```
 
 > 本报告未对上游做任何修改；所有“待验证”项将在 Phase 5 用真实 Windows 环境、真实麦克风与平板浏览器完成验收后转为结论。
+

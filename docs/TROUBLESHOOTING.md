@@ -1,11 +1,11 @@
-# Troubleshooting
+﻿# Troubleshooting
 
 ## ISTS is reachable from other devices on my network
 
 `next start` binds `0.0.0.0` by default. Always start it with:
 
 ```bash
-corepack pnpm start -- -H 127.0.0.1 -p 3000
+corepack pnpm exec next start -H 127.0.0.1 -p 3000
 ```
 
 Check with `netstat -ano | findstr :3000`: it must show `127.0.0.1:3000`.
@@ -65,3 +65,4 @@ Windows: `%APPDATA%\IELTS-Study-Hub\hub\logs\ists.log` and `bandready.log`.
 
 Use corepack (`corepack pnpm …`) inside each app. ISTS pins pnpm 10.30.3, BandReady
 pins 9.12.0; a single global pnpm will break one of them.
+

@@ -1,4 +1,4 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to this project are documented here, following
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
@@ -14,10 +14,13 @@ All notable changes to this project are documented here, following
   - BandReady `b2d67d409e69be60962ca2d123733be0d572761e`
 - Root licence, third-party notices, security policy and contribution guide.
 
-### Planned (Phase 1)
+### Phase 1 implementation
 
-- React + TypeScript portal with module cards, real status and settings.
-- Node process manager (spawn, PID tracking, health probes, logs, graceful stop).
+- React + TypeScript portal: home with module cards and live status, settings, help.
+- Node process manager: config, state store, port checks, spawn/kill by tracked PID,
+  health probes, log rotation, Hub API (/api/state, /api/modules/:id/start|stop),
+  SPA static serving.
 - `check-env`, `setup`, `dev`, `stop` scripts.
-- Installation, architecture, privacy and troubleshooting docs.
-- GitHub Actions: portal typecheck/lint/build, script tests, submodule check.
+- Documentation and GitHub Actions CI.
+- Verified end-to-end: Hub + portal + ISTS on loopback, stop cleans up tracked PIDs.
+
