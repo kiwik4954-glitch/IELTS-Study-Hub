@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  portal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Enable corepack
+        run: corepack enable
+      - name: Install
+        working-directory: portal
+        run: |
+          if [ -f pnpm-lock.yaml ]; then corepack pnpm install --frozen-lockfile; else corepack pnpm install; fi
+      - name: Typecheck (if configured)
+        working-directory: portal
+        run: |
+          if node -e "const p=require('./package.json');process.exit(p.scripts?.typecheck?0:1)"; then corepack pnpm typecheck; else echo "no typecheck script"; fi
+      - name: Build
+        working-directory: portal
+        run: corepack pnpm build
+
+  scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Unit tests
+        run: |
+          if ls scripts/*.test.mjs >/dev/null 2>&1; then node --test scripts/*.test.mjs; else echo "no script tests yet"; fi
+
+  submodules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Verify pinned submodules
+        run: git submodule status --recursive
