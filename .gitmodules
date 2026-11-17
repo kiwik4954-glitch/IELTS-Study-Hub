@@ -1,0 +1,6 @@
+[submodule "apps/ists"]
+	path = apps/ists
+	url = https://github.com/aimerfeng/ists.git
+[submodule "apps/bandready"]
+	path = apps/bandready
+	url = https://github.com/Luxshan2000/ielts-prep.git

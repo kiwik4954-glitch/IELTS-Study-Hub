@@ -1,0 +1,47 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# environment files (never commit keys)
+.env
+.env.*
+!.env.example
+
+# build output
+.next/
+out/
+dist/
+dist-electron/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# hub runtime state and logs
+.hub/
+logs/
+*.log
+
+# local study data (upstream apps keep their own .gitignore too)
+apps/ists/data/
+apps/bandready/.dev-data/
+apps/bandready/sidecar/.venv/
+
+# databases, recordings, model weights, private material
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+models/
+uploads/
+web.json
+open.html
+
+# python
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
