@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "type": "module",
   "description": "Portal UI for IELTS Study Hub — a local entry point for ISTS and BandReady.",
-  "packageManager": "pnpm@12.21.0",
   "engines": {
     "node": ">=20.9"
   },
