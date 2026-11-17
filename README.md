@@ -43,17 +43,25 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the audit-derived details
 - Python ≥ 3.11 and [uv](https://docs.astral.sh/uv/) (for BandReady's sidecar)
 - Windows 10/11 first; macOS/Linux supported by design
 
-## Quick start (once Phase 1 lands)
+## Quick start
 
 ```bash
-git clone --recurse-submodules https://github.com/<owner>/IELTS-Study-Hub.git
+git clone --recurse-submodules https://github.com/kiwik4954-glitch/IELTS-Study-Hub.git
 cd IELTS-Study-Hub
-node scripts/check-env.mjs
-node scripts/setup.mjs
+node scripts/check-env.mjs     # tells you what is missing
+node scripts/setup.mjs         # installs and builds the portal
+
+# one-time upstream dependencies
+cd apps/ists && corepack pnpm install && corepack pnpm build && cd ../..
+
+# BandReady browser edition (once; ~800MB with voice)
+#   irm https://raw.githubusercontent.com/Luxshan2000/ielts-prep/main/install.ps1 | iex
+
 node scripts/dev.mjs
 ```
 
-Then open the portal at `http://127.0.0.1:8780`.
+Then open the portal at `http://127.0.0.1:8780`. `scripts/setup.mjs` deliberately does
+not install upstream dependencies; `check-env` reports exactly which command is missing.
 
 > ISTS must be started with `-H 127.0.0.1`. Its default `next start` binds `0.0.0.0`,
 > which would expose your study data to the local network. The Hub always passes it.
